@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -20,8 +22,8 @@ class _LoginScreenState extends State<LoginScreen> {
   void _login() {
     if (_formKey.currentState?.validate() ?? false) {
       // Handle login logic here
-      print('Username: ${_usernameController.text}');
-      print('Password: ${_passwordController.text}');
+      // print('Username: ${_usernameController.text}');
+      // print('Password: ${_passwordController.text}');
     }
   }
 
@@ -29,14 +31,14 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: const Text('Login'),
       ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              Icon(
+              const Icon(
                 Icons.abc,
                 size: 200,
               ),
@@ -69,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: _login,
-                      child: Text('Login'),
+                      child: const Text('Login'),
                     ),
                   ],
                 ),
