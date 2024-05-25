@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:so_po_dev/auth/controllers/auth_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -8,24 +12,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
-
-  @override
-  void dispose() {
-    _usernameController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
-
-  void _login() {
-    if (_formKey.currentState?.validate() ?? false) {
-      // Handle login logic here
-      // print('Username: ${_usernameController.text}');
-      // print('Password: ${_passwordController.text}');
-    }
-  }
+  final AuthController _authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +30,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 size: 200,
               ),
               Form(
-                key: _formKey,
+                key: _authController.formKey,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     TextFormField(
-                      controller: _usernameController,
+                      controller: _authController.usernameController,
                       decoration: const InputDecoration(labelText: 'Username'),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -58,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                     ),
                     TextFormField(
-                      controller: _passwordController,
+                      controller: _authController.passwordController,
                       decoration: const InputDecoration(labelText: 'Password',),
                       obscureText: true,
                       validator: (value) {
@@ -70,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(
-                      onPressed: _login,
+                      onPressed: _authController.login,
                       child: const Text('Login'),
                     ),
                   ],
