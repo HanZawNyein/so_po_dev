@@ -6,7 +6,7 @@ import 'constants.dart';
 class ApiService {
   Future<Map<String, dynamic>> requestLogin(
       String username, String password) async {
-    print(Constants.loginEndpoint);
+    // print(Constants.loginEndpoint);
     final response = await http.post(
       Uri.parse(Constants.loginEndpoint),
       headers: <String, String>{
