@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:so_po_dev/auth/controllers/auth_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  LoginScreenState createState() => LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreenState extends State<LoginScreen> {
   final AuthController authController = Get.put(AuthController());
 
 
@@ -59,11 +58,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 20),
                     Obx(() {
                       if (authController.isLoading.value) {
-                        return CircularProgressIndicator();
+                        return const CircularProgressIndicator();
                       } else {
                         return ElevatedButton(
                           onPressed: authController.login,
-                          child: Text('Login'),
+                          child: const Text('Login'),
                         );
                       }
                     }),
@@ -72,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (authController.loginError.isNotEmpty) {
                         return Text(
                           authController.loginError.value,
-                          style: TextStyle(color: Colors.red),
+                          style: const TextStyle(color: Colors.red),
                         );
                       } else {
                         return Container();
