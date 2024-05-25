@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     TextFormField(
                       controller: _passwordController,
-                      decoration: InputDecoration(labelText: 'Password'),
+                      decoration: InputDecoration(labelText: 'Password',),
                       obscureText: true,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
