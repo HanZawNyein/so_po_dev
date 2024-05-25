@@ -12,7 +12,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final AuthController _authController = Get.put(AuthController());
+  final AuthController authController = Get.put(AuthController());
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +31,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 size: 200,
               ),
               Form(
-                key: _authController.formKey,
+                key: authController.formKey,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     TextFormField(
-                      controller: _authController.usernameController,
+                      controller: authController.usernameController,
                       decoration: const InputDecoration(labelText: 'Username'),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -45,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                     ),
                     TextFormField(
-                      controller: _authController.passwordController,
+                      controller: authController.passwordController,
                       decoration: const InputDecoration(labelText: 'Password',),
                       obscureText: true,
                       validator: (value) {
@@ -56,10 +57,27 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                     ),
                     const SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: _authController.login,
-                      child: const Text('Login'),
-                    ),
+                    Obx(() {
+                      if (authController.isLoading.value) {
+                        return CircularProgressIndicator();
+                      } else {
+                        return ElevatedButton(
+                          onPressed: authController.login,
+                          child: Text('Login'),
+                        );
+                      }
+                    }),
+                    const SizedBox(height: 20),
+                    Obx(() {
+                      if (authController.loginError.isNotEmpty) {
+                        return Text(
+                          authController.loginError.value,
+                          style: TextStyle(color: Colors.red),
+                        );
+                      } else {
+                        return Container();
+                      }
+                    }),
                   ],
                 ),
               ),
