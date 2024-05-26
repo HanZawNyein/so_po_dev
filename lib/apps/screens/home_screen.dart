@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:so_po_dev/apps/screens/widgets/griditem_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -7,33 +8,18 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<String> items = List<String>.generate(20, (index) => "Item $index");
     return Scaffold(
-      appBar: AppBar(title: Text("HOME"),),
+      appBar: AppBar(title: const Text("HOME"),),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, // Number of columns
             crossAxisSpacing: 10.0, // Horizontal space between grid items
             mainAxisSpacing: 10.0, // Vertical space between grid items
           ),
           itemCount: items.length,
           itemBuilder: (context, index) {
-            // return GridItem(item: items[index]);
-            return Container(
-              decoration: BoxDecoration(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Center(
-                child: Text(
-                  items[index],
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-            );
+            return GridItem(item: items[index]);
           },
         ),
       ),

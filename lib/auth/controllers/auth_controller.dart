@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:so_po_dev/apps/screens/home_scree.dart';
+import 'package:so_po_dev/apps/screens/home_screen.dart';
 import 'package:so_po_dev/network/services.dart';
 
 class AuthController extends GetxController {
