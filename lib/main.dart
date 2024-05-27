@@ -3,8 +3,12 @@ import 'package:get/get.dart';
 import 'package:so_po_dev/apps/screens/home_screen.dart';
 
 import 'auth/screen/login_screen.dart';
+import 'network/share_preferences.dart';
 
-void main() {
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPrefs.init();
   runApp(const MyApp());
 }
 
@@ -14,6 +18,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final Cookies = SharedPrefs.getString('Cookies');
+
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -35,8 +41,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // home: LoginScreen(),
-      home: HomeScreen(),
+      home:  Cookies != null ? HomeScreen():LoginScreen(),
+      // home: const HomeScreen(),
     );
   }
 }

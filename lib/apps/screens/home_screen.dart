@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:so_po_dev/apps/controllers/home_controller.dart';
-import 'package:so_po_dev/apps/screens/widgets/griditem_widget.dart';
+import 'package:so_po_dev/apps/screens/widgets/grid_item_widget.dart';
 
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

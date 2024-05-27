@@ -1,4 +1,5 @@
 import 'package:http/http.dart' as http;
+import 'package:so_po_dev/network/share_preferences.dart';
 import 'dart:convert';
 
 import 'constants.dart';
@@ -22,6 +23,9 @@ class ApiService {
     );
 
     if (response.statusCode == 200) {
+      SharedPrefs.setString('Cookies', response.headers['set-cookie']!);
+      // final Cookies = SharedPrefs.getString('Cookies');
+      // print(response.headers['set-cookie']);
       return jsonDecode(response.body);
     } else {
       throw Exception('Failed to login');

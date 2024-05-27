@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -36,11 +35,10 @@ class AuthController extends GetxController {
           usernameController.text = '';
           passwordController.text = '';
           loginError('');
-          Get.offAll(() => HomeScreen());
-          // print('Login successful: ${loginResponse}');
+          Get.offAll(() => const HomeScreen());
         }
         // Handle successful login here, e.g., navigate to a different screen
-        // Get.to(HomeScreen());
+
       } catch (e) {
         loginError('Login failed: $e'); // Set error message
         // print('Login failed: $e');

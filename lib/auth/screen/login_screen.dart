@@ -13,7 +13,6 @@ class LoginScreen extends StatefulWidget {
 class LoginScreenState extends State<LoginScreen> {
   final AuthController authController = Get.put(AuthController());
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +36,8 @@ class LoginScreenState extends State<LoginScreen> {
                     children: <Widget>[
                       TextFormField(
                         controller: authController.usernameController,
-                        decoration: const InputDecoration(labelText: 'Username'),
+                        decoration:
+                            const InputDecoration(labelText: 'Username'),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your username';
@@ -47,7 +47,9 @@ class LoginScreenState extends State<LoginScreen> {
                       ),
                       TextFormField(
                         controller: authController.passwordController,
-                        decoration: const InputDecoration(labelText: 'Password',),
+                        decoration: const InputDecoration(
+                          labelText: 'Password',
+                        ),
                         obscureText: true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
