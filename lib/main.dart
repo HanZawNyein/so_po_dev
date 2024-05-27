@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final Cookies = SharedPrefs.getString('Cookies');
+    final cookies = SharedPrefs.getString('Cookies');
 
     return GetMaterialApp(
       title: 'Flutter Demo',
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  Cookies != null ? HomeScreen():LoginScreen(),
+      home:  cookies != null ? const HomeScreen():const LoginScreen(),
       // home: const HomeScreen(),
     );
   }
